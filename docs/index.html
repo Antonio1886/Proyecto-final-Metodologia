@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameKeys - Llaves de Acceso para Videojuegos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>GameHub</h1>
+            <p>Tu tienda confiable de llaves de acceso para videojuegos</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li class="cart-icon"><a href="#carrito"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="productos">
+            <h2>Nuestros Productos Destacados</h2>
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Elden+Ring+Key" alt="Elden Ring Key">
+                    <h3>Elden Ring - Steam Key</h3>
+                    <p class="description">Llave de acceso para Steam. Incluye el juego completo con todos los contenidos base.</p>
+                    <div class="price">$49.99 <span class="original-price">$59.99</span></div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(128)</span>
+                    </div>
+                    <button class="add-to-cart" data-id="1" data-name="Elden Ring - Steam Key" data-price="49.99">Añadir al carrito</button>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Call+of+Duty+MW3+Key" alt="Call of Duty MW3 Key">
+                    <h3>Call of Duty: Modern Warfare 3 - Battle.net Key</h3>
+                    <p class="description">Llave de activación para Battle.net. Versión estándar del juego.</p>
+                    <div class="price">$54.99</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(95)</span>
+                    </div>
+                    <button class="add-to-cart" data-id="2" data-name="Call of Duty: Modern Warfare 3 - Battle.net Key" data-price="54.99">Añadir al carrito</button>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Cyberpunk+2077+Key" alt="Cyberpunk 2077 Key">
+                    <h3>Cyberpunk 2077 - GOG Key</h3>
+                    <p class="description">Llave de activación para GOG. Incluye todos los DLCs y actualizaciones.</p>
+                    <div class="price">$39.99 <span class="original-price">$49.99</span></div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(210)</span>
+                    </div>
+                    <button class="add-to-cart" data-id="3" data-name="Cyberpunk 2077 - GOG Key" data-price="39.99">Añadir al carrito</button>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=The+Witcher+3+Key" alt="The Witcher 3 Key">
+                    <h3>The Witcher 3: Wild Hunt - Steam Key</h3>
+                    <p class="description">Edición Game of the Year. Incluye ambos expansiones y todos los DLCs.</p>
+                    <div class="price">$29.99</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(356)</span>
+                    </div>
+                    <button class="add-to-cart" data-id="4" data-name="The Witcher 3: Wild Hunt - Steam Key" data-price="29.99">Añadir al carrito</button>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Starfield+Key" alt="Starfield Key">
+                    <h3>Starfield - Xbox/PC Key</h3>
+                    <p class="description">Llave de activación para Xbox Store o Microsoft Store. Juego completo.</p>
+                    <div class="price">$59.99</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(78)</span>
+                    </div>
+                    <button class="add-to-cart" data-id="5" data-name="Starfield - Xbox/PC Key" data-price="59.99">Añadir al carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="ofertas">
+            <h2>Ofertas Especiales</h2>
+            <div class="special-offer">
+                <div class="offer-text">
+                    <h3>¡Descuento del 20% en tu primera compra!</h3>
+                    <p>Usa el código <strong>WELCOME20</strong> al finalizar tu compra.</p>
+                    <small>*Válido solo para nuevos clientes. Máximo descuento $20.</small>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios">
+            <h2>¿Por qué comprar en GameKeys?</h2>
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Llaves 100% Legítimas</h3>
+                    <p>Todas nuestras llaves son adquiridas directamente de los distribuidores oficiales.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Entrega Instantánea</h3>
+                    <p>Recibe tu llave por email inmediatamente después del pago.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-headset"></i>
+                    <h3>Soporte 24/7</h3>
+                    <p>Nuestro equipo de soporte está disponible para ayudarte en cualquier momento.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GameKeys</h3>
+                    <p>La mejor tienda de llaves de acceso para videojuegos desde 2023.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-envelope"></i> contacto@gamekeys.com</p>
+                    <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 GameKeys. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cart-notification" class="cart-notification">
+        Producto añadido al carrito!
+    </div>
+
+    <script>
+        // Funcionalidad básica del carrito
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                // Actualizar contador del carrito
+                const cartCount = document.getElementById('cart-count');
+                cartCount.textContent = parseInt(cartCount.textContent) + 1;
+                
+                // Mostrar notificación
+                const notification = document.getElementById('cart-notification');
+                notification.style.display = 'block';
+                
+                // Ocultar notificación después de 3 segundos
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+                
+                // Aquí podrías agregar lógica para almacenar los items en el carrito
+                // Por ejemplo:
+                // const productId = this.getAttribute('data-id');
+                // const productName = this.getAttribute('data-name');
+                // const productPrice = this.getAttribute('data-price');
+                // agregarAlCarrito(productId, productName, productPrice);
+            });
+        });
+    </script>
+</body>
+</html>
