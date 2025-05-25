@@ -22,7 +22,7 @@
         <div class="container">
             <ul>
                 <li><a href="Registro.html" aria-label="Ir a inicio">Inicio</a></li>
-                <li><a href="catalog.html" aria-label="Ver productos">Productos</a></li>
+                <li><a href="Home.html" aria-label="Ver productos">Productos</a></li>
                 <li><a href="#ofertas" aria-label="Ver ofertas">Ofertas</a></li>
                 <li><a href="#contacto" aria-label="Ir a contacto">Contacto</a></li>
                 <li class="cart-icon">
@@ -160,3 +160,83 @@
 
 </body>
 </html>
+
+<script>
+    function getCartItems() {
+        return JSON.parse(localStorage.getItem('cart-items')) || [];
+    }
+
+    function renderCartItems() {
+        const cartContainer = document.getElementById('carrito-lista');
+        const items = getCartItems();
+
+        if (items.length === 0) {
+            cartContainer.innerHTML = "<p>Tu carrito está vacío.</p>";
+            return;
+        }
+
+        cartContainer.innerHTML = "";
+        let total = 0;
+
+        items.forEach(item => {
+            total += item.price;
+            cartContainer.innerHTML += `
+                <div class="carrito-item">
+                    <img src="${item.image}" alt="${item.name}" class="carrito-img">
+                    <div class="carrito-detalle">
+                        <h4>${item.name}</h4>
+                        <p>$${item.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('carrito-total').textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    // Ejecutar al cargar la página
+    window.addEventListener('DOMContentLoaded', renderCartItems);
+</script>
+
+<main class="container">
+    <section id="carrito">
+        <h2>Tu Carrito</h2>
+        <div id="carrito-lista"></div>
+        <div id="carrito-total" class="carrito-total"></div>
+    </section>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const cartItems = JSON.parse(localStorage.getItem('cart-items')) || [];
+    const container = document.querySelector('.container');
+
+    if (cartItems.length === 0) {
+        container.innerHTML += '<p>Tu carrito está vacío.</p>';
+        return;
+    }
+
+    const table = document.createElement('table');
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${cartItems.map(item => `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                    <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                </tr>
+            `).join('')}
+        </tbody>
+    `;
+    container.appendChild(table);
+});
+</script>
+
+</main>

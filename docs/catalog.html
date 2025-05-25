@@ -32,7 +32,7 @@
     <div class="container">
       <ul>
         <li><a href="Registro.html" aria-label="Ir a inicio">Inicio</a></li>
-        <li><a href="catalog.html" aria-label="Ver productos">Productos</a></li>
+        <li><a href="Home.html" aria-label="Ver productos">Productos</a></li>
         <li><a href="#ofertas" aria-label="Ver ofertas">Ofertas</a></li>
         <li><a href="#contacto" aria-label="Ir a contacto">Contacto</a></li>
         <li class="cart-icon">
@@ -174,3 +174,37 @@
 
 </body>
 </html>
+
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function () {
+        const id = this.dataset.id;
+        const name = this.dataset.name;
+        const price = parseFloat(this.dataset.price);
+
+        // Obtener productos existentes del carrito
+        const cart = JSON.parse(localStorage.getItem('cart-items')) || [];
+
+        // Verificar si el producto ya está en el carrito
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id, name, price, quantity: 1 });
+        }
+
+        // Guardar nuevamente el carrito en localStorage
+        localStorage.setItem('cart-items', JSON.stringify(cart));
+
+        // Actualizar el contador visible
+        const count = cart.reduce((total, item) => total + item.quantity, 0);
+        document.getElementById('cart-count').textContent = count;
+        localStorage.setItem('cart-count', count);
+
+        // Mostrar notificación
+        const notification = document.getElementById('cart-notification');
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    });
+});
