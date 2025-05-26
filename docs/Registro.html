@@ -59,22 +59,8 @@
         </div>
     </footer>
 
-    <script>
-    document.getElementById('registroForm').addEventListener('submit', function(e) {
-        e.preventDefault();
 
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
+    <script type="module" src="./registro.js"></script>
 
-        if (password.length < 6) {
-            alert('La contraseña debe tener al menos 6 caracteres.');
-            return;
-        }
-
-        // Simulación de registro exitoso
-        alert(`¡Registro exitoso para ${email}!`);
-        window.location.href = "Home.html";
-    });
-    </script>
 </body>
 </html>

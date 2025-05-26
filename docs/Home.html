@@ -17,9 +17,12 @@
 
     <!-- ✅ JavaScript de catálogo, cargado después de Supabase -->
     <script type="module" src="catalog.js"></script>
+    <script type="module" src="authCheck.js"></script>
+
 
     <!-- ✅ Favicon opcional -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
 </head>
 
 <body>
@@ -36,15 +39,24 @@
         <div class="container">
             <ul>
                 <li><a href="Registro.html" aria-label="Ir a inicio">Inicio</a></li>
+                
                 <li><a href="Home.html" aria-label="Ver productos">Productos</a></li>
                 <li><a href="#ofertas" aria-label="Ver ofertas">Ofertas</a></li>
                 <li><a href="#contacto" aria-label="Ir a contacto">Contacto</a></li>
+               <p>Bienvenido: <strong><span id="user-username"></span></strong> <span id="user-email"></span></p>
+
+
+                <button id="logout-btn" class="add-to-cart">Cerrar sesión</button>
+
                 <li class="cart-icon">
+                    
                     <a href="Carrito.html" aria-label="Ver carrito de compras">
                         <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         <span id="cart-count">0</span>
                     </a>
+                    
                 </li>
+                
             </ul>
         </div>
     </nav>
@@ -202,6 +214,10 @@
             });
         });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="/js/register.js"></script>
+<script type="module" src="./authCheck.js"></script>
+<script type="module" src="./logout.js"></script>
 
 </body>
 </html>

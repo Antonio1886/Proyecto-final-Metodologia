@@ -1,80 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Perfil - Tienda Gamer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crear Perfil - GameKeys</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <h1>CREAR PERFIL</h1>
-        <p>Personaliza tu experiencia gamer</p>
-    </header>
+  <header>
+    <h1>CREAR PERFIL</h1>
+    <p>Personaliza tu experiencia gamer</p>
+  </header>
 
-    <section class="container" id="crear-perfil">
-        <h2>Tu Identidad Gamer</h2>
+  <section class="container" id="crear-perfil">
+    <h2>Tu Identidad Gamer</h2>
 
-        <form class="profile-form">
-            <div class="form-group">
-                <label for="username"><i class="fas fa-user"></i> Nombre de usuario</label>
-                <input type="text" id="username" name="username" placeholder="Ej. DarkKnight99" required>
-            </div>
+    <form class="profile-form">
+      <div class="form-group">
+        <label for="username"><i class="fas fa-user"></i> Nombre de usuario</label>
+        <input type="text" id="username" name="username" placeholder="Ej. DarkKnight99" required />
+      </div>
 
-            <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> Correo electrónico</label>
-                <input type="email" id="email" name="email" placeholder="tucorreo@example.com" required>
-            </div>
+      <div class="form-group">
+        <label for="email"><i class="fas fa-envelope"></i> Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tucorreo@example.com" required />
+      </div>
 
-            <div class="form-group">
-                <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="********" required>
-            </div>
+      <div class="form-group">
+        <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="********" required />
+      </div>
 
-            <button type="submit" class="add-to-cart">Crear Perfil</button>
-        </form>
-    </section>
+      <button type="submit" class="add-to-cart">Crear Perfil</button>
+    </form>
+  </section>
 
-     <footer id="contacto">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>GameKeys</h3>
-                    <p>La mejor tienda de llaves de acceso para videojuegos desde 2023.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> contacto@gamekeys.com</p>
-                    <p><i class="fas fa-phone" aria-hidden="true"></i> +1 234 567 890</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Síguenos</h3>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 GameKeys. Todos los derechos reservados.</p>
-            </div>
+  <footer id="contacto">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>GameKeys</h3>
+          <p>La mejor tienda de llaves de acceso para videojuegos desde 2023.</p>
         </div>
-    </footer>
-<script>
-document.querySelector('.profile-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Previene el envío real del formulario
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <p><i class="fas fa-envelope"></i> contacto@gamekeys.com</p>
+          <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+        </div>
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 GameKeys. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
 
-    // Aquí puedes agregar validación o lógica de registro
-    // Por ejemplo, enviar los datos a un servidor con fetch()
-
-    // Simulando registro exitoso
-    alert("¡Registro exitoso!");
-    window.location.href = "Registro.html"; // Redirige a index.html
-});
-</script>
+  <!-- Supabase y JS modular -->
+  <script type="module" src="registro.js"></script>
 </body>
 </html>
-
