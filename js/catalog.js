@@ -1,111 +1,82 @@
-// catalog.js
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+// js/catalog.js
+import { supabase } from './supabase.js';
 
-// ⚠️ Reemplaza con tu URL y clave pública de Supabase
-const supabaseUrl = 'https://TU-https://ejseoopywhotaxctscbm.supabase.co.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqc2Vvb3B5d2hvdGF4Y3RzY2JtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcxNjkyMjYsImV4cCI6MjA2Mjc0NTIyNn0.DmYXz1VRK9oHu5MT0oIxiX2NanLrvTSRyo4zagLJpfk';
+document.addEventListener('DOMContentLoaded', async () => {
+  const productGrid = document.querySelector('.product-grid');
+  if (!productGrid) {
+    console.error('No se encontró el contenedor .product-grid');
+    return;
+  }
 
+  // Obtiene los productos desde Supabase
+  const { data: products, error } = await supabase.from('products').select('*');
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+  if (error) {
+    console.error('Error al obtener productos de Supabase:', error.message);
+    return;
+  }
 
-const productGrid = document.querySelector('.product-grid');
-const cartCount = document.getElementById('cart-count');
+  // Limpia el contenido actual
+  productGrid.innerHTML = '';
 
-// Mostrar contador previo del carrito
-const storedCount = localStorage.getItem('cart-count');
-cartCount.textContent = storedCount || 0;
+  // Renderiza cada producto
+  products.forEach(product => {
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+    productCard.innerHTML = `
+      <img src="${product.image_url}" alt="${product.title}" loading="lazy">
+      <h3>${product.name}</h3>
+      <p class="description">${product.description}</p>
+      <div class="price">
+        $${(product.price ?? 0).toFixed(2)} 
+        <span class="original-price">$${(product.original_price ?? product.price ?? 0).toFixed(2)}</span>
+      </div>
+      <div class="rating">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        <span>(123)</span>
+      </div>
+      <button class="add-to-cart" role="button" aria-label="Añadir ${product.name} al carrito"
+        data-id="${product.id}"
+        data-name="${product.name}"
+        data-price="${product.price}">
+        Añadir al carrito
+      </button>
+    `;
+    productGrid.appendChild(productCard);
+  });
 
-// Cargar productos desde Supabase
-async function cargarProductos() {
-    const { data: products, error } = await supabase
-        .from('products')
-        .select('*');
-
-    if (error) {
-        console.error('Error al cargar productos:', error.message);
-        productGrid.innerHTML = '<p>Error al cargar productos.</p>';
-        return;
+  // Delegación de eventos para botones "Añadir al carrito"
+  productGrid.addEventListener('click', event => {
+    if (event.target.classList.contains('add-to-cart')) {
+      const button = event.target;
+      const product = {
+        id: parseInt(button.dataset.id),
+        name: button.dataset.name,
+        price: parseFloat(button.dataset.price),
+      };
+      addToCart(product);
+      alert(`${product.name} fue añadido al carrito.`);
     }
-
-    products.forEach(producto => {
-        const card = document.createElement('div');
-        card.classList.add('product-card');
-
-        const estrellas = Math.floor(producto.rating);
-        const mediaEstrella = producto.rating % 1 >= 0.5;
-
-        card.innerHTML = `
-            <img src="${producto.image_url || 'https://via.placeholder.com/300x200?text=Game+Key'}" alt="Imagen de ${producto.name}">
-            <h3>${producto.name}</h3>
-            <p class="description">${producto.description}</p>
-            <div class="price">$${producto.price} <span class="original-price">$${producto.original_price}</span></div>
-            <div class="rating">
-                ${'<i class="fas fa-star" aria-hidden="true"></i>'.repeat(estrellas)}
-                ${mediaEstrella ? '<i class="fas fa-star-half-alt" aria-hidden="true"></i>' : ''}
-                <span>(${producto.reviews_count})</span>
-            </div>
-            <button class="add-to-cart" 
-                aria-label="Añadir ${producto.name} al carrito" 
-                data-id="${producto.id}" 
-                data-name="${producto.name}" 
-                data-price="${producto.price}">
-                Añadir al carrito
-            </button>
-        `;
-        productGrid.appendChild(card);
-    });
-}
-
-cargarProductos();
-
-// Evento para añadir productos al carrito
-document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('add-to-cart')) {
-        let count = parseInt(cartCount.textContent) + 1;
-        cartCount.textContent = count;
-        localStorage.setItem('cart-count', count);
-
-        const notification = document.getElementById('cart-notification');
-        notification.style.display = 'block';
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 3000);
-    }
+  });
 });
 
-// Obtener productos guardados del carrito
-function getCartItems() {
-    return JSON.parse(localStorage.getItem('cart-items')) || [];
+// Funciones de carrito
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-// Guardar productos en el carrito
-function saveCartItems(items) {
-    localStorage.setItem('cart-items', JSON.stringify(items));
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Escuchar clicks en botones "Añadir al carrito"
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function () {
-        const product = {
-            id: this.dataset.id,
-            name: this.dataset.name,
-            price: parseFloat(this.dataset.price),
-            image: this.closest('.product-card').querySelector('img').src
-        };
-
-        const cartItems = getCartItems();
-        cartItems.push(product);
-        saveCartItems(cartItems);
-
-        // Actualizar el contador del carrito
-        document.getElementById('cart-count').textContent = cartItems.length;
-        localStorage.setItem('cart-count', cartItems.length);
-
-        // Notificación
-        const notification = document.getElementById('cart-notification');
-        notification.style.display = 'block';
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 3000);
-    });
-});
+function addToCart(product) {
+  const cart = getCart();
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+  saveCart(cart);
+  
+}

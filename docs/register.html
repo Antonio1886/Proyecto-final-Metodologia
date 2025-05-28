@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro - Tienda Gamer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styless.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
+<body class="dark neon">
+
     <header>
         <h1>REGISTRO</h1>
         <p>Accede a descuentos, ofertas y más como gamer registrado</p>
@@ -16,19 +17,21 @@
     <section class="container" id="registro">
         <h2>Crea tu cuenta</h2>
 
-        <form class="profile-form" id="registroForm">
+        <form class="profile-form" id="register-form">
             <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> Correo electrónico</label>
-                <input type="email" id="email" name="email" placeholder="tucorreo@example.com" required>
+                <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com" required autocomplete="email">
             </div>
 
             <div class="form-group">
                 <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="********" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña de 6 dígitos" required autocomplete="new-password">
             </div>
 
-            <button type="submit" class="add-to-cart">Iniciar Sesion</button>
+            <button type="submit" class="add-to-cart">Registrarse</button>
         </form>
+
+        <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
     </section>
 
     <footer id="contacto">
@@ -59,8 +62,6 @@
         </div>
     </footer>
 
-
-    <script type="module" src="./register.js"></script>
-
+    <script type="module" src="/js/auth.js"></script>
 </body>
 </html>

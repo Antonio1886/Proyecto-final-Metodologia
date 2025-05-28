@@ -2,26 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Inicio - Tienda Gamer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión - Tienda Gamer</title>
     <link rel="stylesheet" href="/css/styless.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body class="dark neon">
 
     <header>
-        <h1> Game hub</h1>
-        <p>Explora, selecciona y compra llaves digitales de videojuegos</p>
+        <h1>INICIAR SESIÓN</h1>
+        <p>Ingresa para acceder a tus juegos, llaves y recompensas exclusivas</p>
     </header>
 
-    <section class="container center-content" id="inicio">
-        <h2>¡Bienvenido, gamer!</h2>
-        <p>Inicia sesión o crea una cuenta para acceder a ofertas, descuentos y tu biblioteca digital.</p>
+    <section class="container" id="registro">
+        <h2>Bienvenido de nuevo</h2>
 
-        <div class="btn-group">
-            <a href="login.html" class="btn-neon"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
-            <a href="register.html" class="btn-neon"><i class="fas fa-user-plus"></i> Registrarse</a>
-        </div>
+        <form class="profile-form" id="login-form">
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Tu contraseña" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="add-to-cart">Iniciar sesión</button>
+        </form>
+
+    
+
+        <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
     </section>
 
     <footer id="contacto">
@@ -52,5 +64,6 @@
         </div>
     </footer>
 
+    <script type="module" src="/js/login.js"></script>
 </body>
 </html>

@@ -1,30 +1,19 @@
-// login.js
-import { supabase } from './supabaseClient.js';
+import { supabase } from './supabase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('registroForm');
-
-  form.addEventListener('submit', async (e) => {
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const email = document.getElementById('email').value.trim();
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    if (!email || !password) {
-      alert('Por favor, completa todos los campos');
-      return;
-    }
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return alert('Error al iniciar sesión: ' + error.message);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
+    window.location.href = 'store.html';
+  });
 
-    if (error) {
-      alert('Error al iniciar sesión: ' + error.message);
-    } else {
-      alert('¡Inicio de sesión exitoso!');
-      window.location.href = 'Home.html'; // Página protegida
-    }
+  document.getElementById('google-login').addEventListener('click', async () => {
+    const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
+    if (error) alert('Error con Google: ' + error.message);
   });
 });
